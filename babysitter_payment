@@ -1,0 +1,37 @@
+def babysitter_payment(start_time, end_time):
+    """
+    (number, number) -> number
+    Calculate the total payment for a babysitter based on start and end times.
+    
+    The function uses a fixed hourly rate of 60 NIS and an additional fixed amount of 20 NIS.
+    It supports half-hour increments by accepting start and end times as floating-point numbers.
+    
+    Parameters:
+    start_time (float): The start time in hours (24-hour format). Example: 13.5 for 13:30.
+    end_time (float): The end time in hours (24-hour format). Example: 15.0 for 15:00.
+
+    Returns:
+    tuple: A tuple containing the number of hours worked and the total payment in NIS.
+    
+    Example:
+    >>> babysitter_payment(13.5, 15.0)
+    (1.5, 110.0)
+    """
+    # Fixed values
+    hourly_rate = 60.0  # 60 NIS per hour
+    additional_amount = 20.0  # Fixed amount of 20 NIS
+    
+    # Calculate the number of hours worked, including half-hour increments
+    hours_worked = end_time - start_time
+    
+    # Calculate the total payment
+    total_payment = (hours_worked * hourly_rate) + additional_amount
+    
+    return hours_worked, total_payment
+
+# Example usage
+start_time = float(input("Enter start time (e.g., 13.5 for 13:30): "))
+end_time = float(input("Enter end time (e.g., 15.0 for 15:00): "))
+
+hours_worked, final_price = babysitter_payment(start_time, end_time)
+print(f"{hours_worked} hour(s), final payment: {final_price} NIS")
